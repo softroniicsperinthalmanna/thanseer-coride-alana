@@ -1,6 +1,7 @@
 import 'package:corider/Car%20pooling/c1.dart';
 import 'package:corider/Goods%20Movement/gm1.dart';
 import 'package:corider/Group%20trip/gt1.dart';
+import 'package:corider/Rental%20cars/r1.dart';
 import 'package:flutter/material.dart';
 class h1 extends StatefulWidget {
   const h1({Key? key}) : super(key: key);
@@ -107,7 +108,9 @@ class _h1State extends State<h1> {
                           style:ElevatedButton.styleFrom(
                               foregroundColor: Colors.grey,
                               backgroundColor: Colors.white),
-                          onPressed: (){}, child: Text(
+                          onPressed: (){
+                            Navigator.push(context, MaterialPageRoute(builder: (context)=>r1()));
+                          }, child: Text(
                         'Rental Service',style: TextStyle(color: Colors.black,fontSize: 22),)),
                     ),
                   ),
@@ -125,7 +128,7 @@ class _h1State extends State<h1> {
                             foregroundColor: Colors.grey,
                             backgroundColor: Colors.white),
                         onPressed: (){
-                          Navigator.push(context, MaterialPageRoute(builder: (context)=>c1()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>gt1()));
 
                         }, child: Text(
                       'Group Trip',style: TextStyle(color: Colors.black,fontSize: 22),)),

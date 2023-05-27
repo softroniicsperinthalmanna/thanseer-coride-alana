@@ -1,3 +1,5 @@
+import 'package:corider/Group%20trip/gt2.dart';
+import 'package:corider/Group%20trip/gt3.dart';
 import 'package:flutter/material.dart';
 class gt1 extends StatelessWidget {
   const gt1({Key? key}) : super(key: key);
@@ -37,7 +39,10 @@ class gt1 extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){}, child: Text(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gt2()));
+
+                      }, child: Text(
                     'Find group trip',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
             SizedBox(height: 30,),
@@ -48,7 +53,10 @@ class gt1 extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){}, child: Text(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gt3()));
+
+                      }, child: Text(
                     'Create group trip',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
 

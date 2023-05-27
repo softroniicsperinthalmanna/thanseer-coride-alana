@@ -1,3 +1,5 @@
+import 'package:corider/Car%20pooling/c2.dart';
+import 'package:corider/Car%20pooling/c3.dart';
 import 'package:flutter/material.dart';
 class c1 extends StatelessWidget {
   const c1({Key? key}) : super(key: key);
@@ -37,7 +39,9 @@ class c1 extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){}, child: Text(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>c2()));
+                      }, child: Text(
                     'Find Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
             SizedBox(height: 30,),
@@ -49,7 +53,9 @@ class c1 extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){}, child: Text(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>c3()));
+                      }, child: Text(
                     'Offer Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
 

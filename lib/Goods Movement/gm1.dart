@@ -1,3 +1,5 @@
+import 'package:corider/Goods%20Movement/gm2.dart';
+import 'package:corider/Goods%20Movement/gm3.dart';
 import 'package:flutter/material.dart';
 class gm1 extends StatelessWidget {
   const gm1({Key? key}) : super(key: key);
@@ -37,7 +39,9 @@ class gm1 extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){}, child: Text(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm2()));
+                      }, child: Text(
                     'Find Goods carrier',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
             SizedBox(height: 30,),
@@ -48,7 +52,9 @@ class gm1 extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){}, child: Text(
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm3()));
+                      }, child: Text(
                     'Offer Goods carrier',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
             Container(
