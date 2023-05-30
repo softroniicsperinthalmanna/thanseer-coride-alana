@@ -1,4 +1,5 @@
 import 'package:corider/Home/Home.dart';
+import 'package:corider/Login/forgotpassword.dart';
 import 'package:corider/Login/register.dart';
 import 'package:flutter/material.dart';
 class login extends StatefulWidget {
@@ -65,7 +66,9 @@ class _loginState extends State<login> {
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 225.0),
-                child: TextButton(onPressed: (){}, child: Text('forgote password?',style:TextStyle(color: Colors.black),)),
+                child: TextButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>forgot()));
+                }, child: Text('forgote password?',style:TextStyle(color: Colors.black),)),
               ),
               Container(
                 height: 50,

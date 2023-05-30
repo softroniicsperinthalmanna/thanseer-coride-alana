@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+
+import 'gm5.dart';
 class gm2 extends StatefulWidget {
   const gm2({Key? key}) : super(key: key);
 
@@ -146,6 +148,7 @@ class _gm2State extends State<gm2> {
                           ),
                           backgroundColor: Color(0xff068DA9)),
                       onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm5()));
                       }, child: Text('Search',style: TextStyle(fontSize: 20),)),
                 ),
               ),

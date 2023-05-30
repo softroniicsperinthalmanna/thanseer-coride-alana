@@ -1,3 +1,4 @@
+import 'package:corider/Car%20pooling/c5.dart';
 import 'package:flutter/material.dart';
 class c2 extends StatefulWidget {
   const c2({Key? key}) : super(key: key);
@@ -145,6 +146,7 @@ class _c2State extends State<c2> {
                           ),
                           backgroundColor: Color(0xff068DA9)),
                       onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>c5()));
                       }, child: Text('Search',style: TextStyle(fontSize: 20),)),
                 ),
               ),
