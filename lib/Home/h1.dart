@@ -1,8 +1,17 @@
 import 'package:corider/Car%20pooling/c1.dart';
+import 'package:corider/Car%20pooling/c4.dart';
 import 'package:corider/Goods%20Movement/gm1.dart';
 import 'package:corider/Group%20trip/gt1.dart';
+import 'package:corider/Login/login.dart';
 import 'package:corider/Rental%20cars/r1.dart';
+import 'package:corider/menu/help.dart';
+import 'package:corider/menu/histroy.dart';
+import 'package:corider/menu/myrides.dart';
+import 'package:corider/menu/review.dart';
 import 'package:flutter/material.dart';
+
+import '../menu/complaints.dart';
+
 class h1 extends StatefulWidget {
   const h1({Key? key}) : super(key: key);
 
@@ -15,10 +24,11 @@ class _h1State extends State<h1> {
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+        foregroundColor: Colors.black,
         backgroundColor: Colors.white,
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context);
-        }, icon: Icon(Icons.arrow_back_ios_new,color: Colors.black,)),
+        // leading: IconButton(onPressed: (){
+        //   Navigator.pop(context);
+        // }, icon: Icon(Icons.arrow_back_ios_new,color: Colors.black,)),
         actions: [
           Row(
             children: [
@@ -33,11 +43,147 @@ class _h1State extends State<h1> {
 
               ),
               IconButton(onPressed: (){}, icon: Icon(Icons.notifications_outlined,color: Colors.black,)),
-              IconButton(onPressed: (){}, icon: Icon(Icons.menu,color: Colors.black,)),
+              // IconButton(onPressed: (){
+              // }, icon: Icon(Icons.menu,color: Colors.black,)),
 
             ],
           ), //app name
         ],
+      ),
+      drawer:Drawer (
+        backgroundColor: Colors.white,
+        child: Container(
+          height: 600,
+          child: ListView(
+            children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 150.0),
+              child: DrawerHeader(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CircleAvatar(
+                      backgroundImage: AssetImage('assets/home/h (1).jpeg'),
+                      radius: 50,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0,top: 10),
+                      child: Text('Peter griffin',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                    )
+                  ],
+                )
+              ),
+            ),
+              InkWell( 
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>myrides()));
+                },
+                child: ListTile(
+                  leading: Icon(Icons.mode_of_travel),
+                  title: Text('My Rides'),
+
+                ),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>history()));
+                },
+                child: ListTile(
+                  leading: Icon(Icons.history),
+                  title: Text('History'),
+
+                ),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>complaints()));
+                },
+                child: ListTile(
+                  leading: Icon(Icons.comment),
+                  title: Text('Complaints'),
+
+                ),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>review()));
+
+                },
+                child: ListTile(
+                  leading: Icon(Icons.reviews_outlined),
+                  title: Text('Review'),
+
+                ),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>c4()));
+
+                },
+                child: ListTile(
+                  leading: Icon(Icons.local_offer_outlined),
+                  title: Text('Offer ride'),
+
+                ),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              InkWell(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>help()));
+
+                },
+                child: ListTile(
+                  leading: Icon(Icons.help_outline),
+                  title: Text('Help'),
+
+                ),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              InkWell(
+                onTap: (){
+                showDialog(context: context, builder: (context){
+                  return AlertDialog(
+                  title: Text('Are you sure you want to logout!'),
+                    actions: [
+                      TextButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>h1()));
+
+                      }, child: Text('No')),
+                      TextButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+                      }, child: Text('Yes')),
+
+                    ],
+                  );
+                });
+                },
+                child: ListTile(
+                  leading: Icon(Icons.logout),
+                  title: Text('logout'),
+
+                ),
+              ),
+
+            ],
+          ),
+        ),
+
       ),
       body: SingleChildScrollView(
         child: Column(

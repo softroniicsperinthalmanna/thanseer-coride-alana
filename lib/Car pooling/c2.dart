@@ -89,6 +89,22 @@ class _c2State extends State<c2> {
                   decoration: InputDecoration(
                       filled: true,
                       fillColor: Color(0xffDCDADA),
+                      hintText: 'Distance (km)',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
+
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                child: TextField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffDCDADA),
                       hintText: 'Time  (9:00 am)',
                       border: OutlineInputBorder(
                           borderSide: BorderSide.none,
