@@ -34,9 +34,9 @@ body: SafeArea(
             //app name
           ],
         ),
-        SizedBox(height: 20,),
+        SizedBox(height: 10,),
         Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(10.0),
           child: TextField(
             style: TextStyle(
                 color: Colors.white,

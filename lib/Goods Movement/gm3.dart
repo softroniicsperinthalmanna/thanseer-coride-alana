@@ -187,7 +187,8 @@ class _gm3State extends State<gm3> {
                           ),
                           backgroundColor: Color(0xff068DA9)),
                       onPressed: (){
-                      }, child: Text('Search',style: TextStyle(fontSize: 20),)),
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm4()));
+                      }, child: Text('Add',style: TextStyle(fontSize: 20),)),
                 ),
               ),
 

@@ -34,7 +34,7 @@ class _gm5State extends State<gm5> {
               ],
             ),
             Container(
-              height: 670,
+              height: 580,
               child: ListView.builder(
                   itemCount: 3,
                   itemBuilder: (context,index){

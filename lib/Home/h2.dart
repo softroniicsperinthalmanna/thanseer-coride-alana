@@ -74,7 +74,7 @@ class _h2State extends State<h2> {
       child: Row(
         children: [
           DropdownButton<String>(
-            style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.w300),
           value: selectedOption,
           onChanged: (val) {
           setState(() {
@@ -90,7 +90,7 @@ class _h2State extends State<h2> {
           }).toList(),
           ),
           DropdownButton<String>(
-            style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.w400),
 
             value: selectedOption2,
             onChanged: (val) {

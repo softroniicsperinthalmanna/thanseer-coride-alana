@@ -34,7 +34,7 @@ class _c5State extends State<c5> {
                   ],
                 ),
                 Container(
-                  height: 670,
+                  height: 580,
                   child: ListView.builder(
                     itemCount: 3,
                       itemBuilder: (context,index){
@@ -52,8 +52,7 @@ class _c5State extends State<c5> {
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
-                                        Text('Calicut',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                                        Text('Cochin',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                        Text('Calicut - Cochin ',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
 
                                       ],
                                     ),

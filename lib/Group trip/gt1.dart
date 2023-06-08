@@ -30,7 +30,7 @@ class gt1 extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 150,
+              height: 139,
             ),
             Card(
               elevation: 10,
@@ -45,7 +45,7 @@ class gt1 extends StatelessWidget {
                       }, child: Text(
                     'Find group trip',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
-            SizedBox(height: 30,),
+            SizedBox(height: 25,),
             Card(
               elevation: 10,
               child: Container(
@@ -61,7 +61,7 @@ class gt1 extends StatelessWidget {
             ),
 
             Container(
-                height: 300,
+                height: 280,
                 width: 350,
                 child: Opacity
                   (

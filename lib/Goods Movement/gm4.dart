@@ -55,7 +55,7 @@ class _gm4State extends State<gm4> {
                         children: [
                           Image(image:  AssetImage('assets/home/h (3).jpeg'),fit: BoxFit.contain,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Jon',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                               Text('9876543210',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
@@ -66,7 +66,7 @@ class _gm4State extends State<gm4> {
                           SizedBox(height: 10,),
 
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('Calicut',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                               Text('Cochin',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
@@ -76,7 +76,7 @@ class _gm4State extends State<gm4> {
 
                           SizedBox(height: 10,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('KL53E7515',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                               Text('4 Seats',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
@@ -85,7 +85,7 @@ class _gm4State extends State<gm4> {
                           ),
                           SizedBox(height: 10,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text('9:00 Am',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
                               Text('21/02/2023',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),

@@ -60,7 +60,7 @@ class c1 extends StatelessWidget {
             ),
 
             Container(
-                height: 300,
+                height: 200,
                 width: 350,
                 child: Opacity
                   (

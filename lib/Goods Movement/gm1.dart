@@ -58,7 +58,7 @@ class gm1 extends StatelessWidget {
                     'Offer Goods carrier',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
             Container(
-                height: 300,
+                height: 264,
                 width: 350,
                 child: Opacity
                   (
