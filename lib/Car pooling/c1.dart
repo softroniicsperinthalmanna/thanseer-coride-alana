@@ -8,68 +8,70 @@ class c1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+          Row(
           children: [
-        Row(
-        children: [
-        IconButton(onPressed: (){
+          IconButton(onPressed: (){
       Navigator.pop(context);
       }, icon: Icon(Icons.arrow_back_ios_new)),
 
       Padding(
-        padding: const EdgeInsets.only(left: 8.0),
-        child: Text('GO Share',style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.w500,
-            color: Color(0xff068DA9),
-            fontFamily: 'Times New Roman'
-        ),),
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text('GO Share',style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+              color: Color(0xff068DA9),
+              fontFamily: 'Times New Roman'
+          ),),
       ),
 
       //app name
       ],
     ),
-            SizedBox(
-              height: 150,
-            ),
-            Card(
-              elevation: 10,
-              child: Container(
-                  height: 70,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>c2()));
-                      }, child: Text(
-                    'Find Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
-            ),
-            SizedBox(height: 30,),
-            Card(
-              elevation: 10,
-              child: Container(
+              SizedBox(
+                height: 150,
+              ),
+              Card(
+                elevation: 10,
+                child: Container(
+                    height: 70,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>c2()));
+                        }, child: Text(
+                      'Find Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
+              ),
+              SizedBox(height: 30,),
+              Card(
+                elevation: 10,
+                child: Container(
 
-                  height: 70,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>c3()));
-                      }, child: Text(
-                    'Offer Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
-            ),
+                    height: 70,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
+                        onPressed: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context)=>c3()));
+                        }, child: Text(
+                      'Offer Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
+              ),
 
-            Container(
-                height: 200,
-                width: 350,
-                child: Opacity
-                  (
-                    opacity: 0.2,
-                    child: Image(image: AssetImage('assets/login/l.jpg'),fit: BoxFit.cover,))),
+              Container(
+                  height: 200,
+                  width: 350,
+                  child: Opacity
+                    (
+                      opacity: 0.2,
+                      child: Image(image: AssetImage('assets/login/l.jpg'),fit: BoxFit.cover,))),
 
 
 
-          ],
+            ],
+          ),
         ),
       ),
     );

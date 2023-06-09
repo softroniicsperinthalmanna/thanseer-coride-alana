@@ -62,9 +62,9 @@ body: SafeArea(
             ),
           ),
         ),
-        Container(
-          height: 500,
-          width: double.infinity,
+        Expanded(
+          // height: ,
+          // width: double.infinity,
           child: ListView.builder(
               itemCount: 5,
               itemBuilder: (context,index){
@@ -97,9 +97,9 @@ body: SafeArea(
                       Text('Available',style: TextStyle(fontSize: 26,fontWeight: FontWeight.bold,color: Colors.greenAccent),),
 
                       Padding(
-                        padding: const EdgeInsets.only(left: 0.0,top: 15),
+                        padding: const EdgeInsets.only(left: 0.0,top: 5),
                         child: Container(
-                          height: 60,
+                          height: 59,
                           width: 150,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(20)
