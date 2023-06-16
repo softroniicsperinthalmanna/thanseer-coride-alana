@@ -12,8 +12,10 @@ class _c2State extends State<c2> {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: SafeArea(
+
         child: SingleChildScrollView(
-          child: Column(
+          child:
+          Column(
             children: [
               Row(
                 children: [
@@ -36,120 +38,33 @@ class _c2State extends State<c2> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                padding: const EdgeInsets.all(15.0),
                 child: TextField(
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20
+                  ),
                   decoration: InputDecoration(
+                      hintText: 'Destination',
+                      hintStyle: TextStyle(color: Colors.white),
                       filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Pick up',
-                      border: OutlineInputBorder(
+                      fillColor: Color(0xff068DA9),
+                      prefixIcon: Icon(Icons.search_rounded,color: Colors.white,),
+                      enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide.none,
-
                           borderRadius: BorderRadius.circular(20)
+
+                      ),
+                      focusedBorder:  OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)
+
                       )
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Drop',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
 
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'No.of Seats needed',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Distance (km)',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Time  (9:00 am)',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Date   (1/10/2023)',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 0.0,top: 50),
-                child: Container(
-                  height: 60,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          backgroundColor: Color(0xff068DA9)),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>c5()));
-                      }, child: Text('Search',style: TextStyle(fontSize: 20),)),
-                ),
-              ),
 
 
             ],

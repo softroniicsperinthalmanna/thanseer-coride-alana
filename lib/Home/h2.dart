@@ -51,7 +51,7 @@ class _h2State extends State<h2> {
                 fontSize: 20
               ),
               decoration: InputDecoration(
-                hintText: 'Search',
+                hintText: 'Destination',
                 hintStyle: TextStyle(color: Colors.white),
                 filled: true,
                 fillColor: Color(0xff068DA9),
@@ -69,49 +69,10 @@ class _h2State extends State<h2> {
               ),
             ),
           ),
-    Padding(
-      padding: const EdgeInsets.only(left: 30.0),
-      child: Row(
-        children: [
-          DropdownButton<String>(
-            style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.w300),
-          value: selectedOption,
-          onChanged: (val) {
-          setState(() {
-          selectedOption = val!;
-          });
-          },
-          items: <String>['1', '2', '3', '4','5','6','7','8','9','10','11','12']
-              .map((String option) {
-          return DropdownMenuItem<String>(
-          value: option,
-          child: Text(option),
-          );
-          }).toList(),
-          ),
-          DropdownButton<String>(
-            style: TextStyle(fontSize: 25,color: Colors.black,fontWeight: FontWeight.w400),
-
-            value: selectedOption2,
-            onChanged: (val) {
-              setState(() {
-                selectedOption2 = val!;
-              });
-            },
-            items: <String>['AM','PM']
-                .map((String option) {
-              return DropdownMenuItem<String>(
-                value: option,
-                child: Text(option),
-              );
-            }).toList(),
-          ),
 
         ],
       ),
-    ),
-        ],
-      ),
+
 
     );
   }

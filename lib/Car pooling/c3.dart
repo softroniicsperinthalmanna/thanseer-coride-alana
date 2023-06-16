@@ -139,7 +139,7 @@ class _c3State extends State<c3> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 0.0,top: 50),
+                padding: const EdgeInsets.only(left: 0.0,top: 30),
                 child: Container(
                   height: 60,
                   width: 150,
@@ -153,7 +153,7 @@ class _c3State extends State<c3> {
                           ),
                           backgroundColor: Color(0xff068DA9)),
                       onPressed: (){
-                      }, child: Text('Search',style: TextStyle(fontSize: 20),)),
+                      }, child: Text('ADD',style: TextStyle(fontSize: 20),)),
                 ),
               ),
 

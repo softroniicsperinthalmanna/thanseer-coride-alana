@@ -1,6 +1,10 @@
 import 'package:corider/Car%20pooling/c2.dart';
 import 'package:corider/Car%20pooling/c3.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
+
+import 'location.dart';
+
 class c1 extends StatelessWidget {
   const c1({Key? key}) : super(key: key);
 
@@ -30,8 +34,14 @@ class c1 extends StatelessWidget {
       //app name
       ],
     ),
+              Container(
+                height: 350,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.red,
+                child: MapScreen(),
+              ),
               SizedBox(
-                height: 150,
+                height: 10,
               ),
               Card(
                 elevation: 10,
@@ -45,7 +55,7 @@ class c1 extends StatelessWidget {
                         }, child: Text(
                       'Find Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
               ),
-              SizedBox(height: 30,),
+              SizedBox(height: 10,),
               Card(
                 elevation: 10,
                 child: Container(
@@ -60,13 +70,6 @@ class c1 extends StatelessWidget {
                       'Offer Pool',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
               ),
 
-              Container(
-                  height: 200,
-                  width: 350,
-                  child: Opacity
-                    (
-                      opacity: 0.2,
-                      child: Image(image: AssetImage('assets/login/l.jpg'),fit: BoxFit.cover,))),
 
 
 
