@@ -11,7 +11,6 @@ import 'package:corider/menu/review.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/simple/get_state.dart';
 import '../Car pooling/current_location.dart';
-import '../Car pooling/demo.dart';
 import '../menu/complaints.dart';
 // import 'package:corider/Login/login.dart';
 

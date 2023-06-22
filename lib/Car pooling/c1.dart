@@ -36,7 +36,7 @@ class _c1State extends State<c1> {
     'latitude':latitude.toString(),
     'longitude':longitude.toString(),
   };
-  var response =await post(Uri.parse("${con.url}insert.php"),body: data);
+  var response =await post(Uri.parse("${con.url}offer_pool.php"),body: data);
   print(response.body);
   if (jsonEncode(response.statusCode)==200) {
     setState(() {
@@ -95,12 +95,12 @@ class _c1State extends State<c1> {
                     ],
                   ),
                   Container(
-                    height: 350,
+                    height: 300,
                     width: MediaQuery.of(context).size.width,
                     child: Center(
                         child: Column(
                           children: [
-                            SizedBox(height: 20,),
+                            SizedBox(height: 10,),
 
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -148,9 +148,25 @@ class _c1State extends State<c1> {
                           ],
                         )),
                   ),
+                  Container(
+                    color: Colors.grey,
+                    child: ElevatedButton(onPressed: (){
+                      MapUtils.openMap(latitude, longitude);
+                    }, child:
+                       Row(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Icons.map),
+                          Text('Veiw in map')
+                        ],
+                      ),
+                    )),
+
+
                   SizedBox(
-                    height: 10,
+                    height: 5,
                   ),
+
                   Visibility(
                     // visible: (widget.reportType=='missing')?false:true,
 
@@ -202,10 +218,7 @@ class _c1State extends State<c1> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.white),
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => c2()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>c2()));
                             },
                             child: Text(
                               'Find Pool',
@@ -215,6 +228,7 @@ class _c1State extends State<c1> {
                                   fontSize: 20),
                             ))),
                   ),
+
                   SizedBox(
                     height: 10,
                   ),
