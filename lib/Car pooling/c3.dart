@@ -1,9 +1,10 @@
+import 'package:corider/Car%20pooling/c1.dart';
 import 'package:corider/Car%20pooling/c4.dart';
 import 'package:corider/Car%20pooling/connect_location.dart';
-import 'package:corider/Login/connect.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
+import 'connect_location.dart';
 class c3 extends StatefulWidget {
   const c3({Key? key}) : super(key: key);
 
@@ -67,12 +68,14 @@ void initState(){
       'date':datectrl.text,
       'time':timectrl.text,
     };
-    var response=await post(Uri.parse("${con1.url}offer_pool.php"),body: data);
+    var response=await post(Uri.parse("${con.url}offer_pool/offer_pool.php"),body: data);
     print(response.body);
-    if (response.body==200) {
+    if (response.statusCode==200) {
+
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Offer pool registerd')));
-      
-    }  
+      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context)=>c1()),(Route <dynamic> route )=>false);
+    }
+
   }
   @override
   Widget build(BuildContext context) {

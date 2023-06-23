@@ -36,7 +36,7 @@ class _c1State extends State<c1> {
     'latitude':latitude.toString(),
     'longitude':longitude.toString(),
   };
-  var response =await post(Uri.parse("${con.url}offer_pool.php"),body: data);
+  var response =await post(Uri.parse("${con.url}location/insert.php"),body: data);
   print(response.body);
   if (jsonEncode(response.statusCode)==200) {
     setState(() {

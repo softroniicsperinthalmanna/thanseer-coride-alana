@@ -1,6 +1,6 @@
 class con{
-  static const url="http://192.168.1.48/corider/location/";
+  static const url="http://192.168.1.48/corider/";
 }
-class con1{
-  static const url="http://192.168.1.48/corider/offer_pool/";
-}
+// class con_vewipool{
+//   static const url="http://192.168.1.48/corider/";
+// }
