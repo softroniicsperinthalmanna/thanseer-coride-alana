@@ -43,7 +43,7 @@ dependencies:
   get: ^4.6.5
   url_launcher: ^6.1.11
   intl: ^0.18.1
-
+  shared_preferences: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -5,6 +5,7 @@ import 'package:corider/Login/forgotpassword.dart';
 import 'package:corider/Login/register.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'connect.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -42,6 +43,19 @@ class _loginState extends State<login> {
   //     }
   //   }
   // }
+  var log_id;
+  var first_name;
+  var last_name;
+  var mobile_no;
+
+  void savedata(String loginId,first_name,last_name,mobile_no) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('loginId', loginId);
+    prefs.setString('first_name', first_name);
+    prefs.setString('last_name', last_name);
+    prefs.setString('mobile_no', mobile_no);
+
+  }
 Future<void> login() async {
   var data={
     'mobile_no':_mobilenoController.text,
@@ -49,7 +63,11 @@ Future<void> login() async {
   };
   var response = await post(Uri.parse("${con.url}login.php"),body:data );
   print(response.body);
+
+
   if (jsonDecode(response.body)['result']=='Login success') {
+    profile(jsonDecode(response.body)['log_id']);
+
     Navigator.push(context, MaterialPageRoute(builder: (context)=>home()));
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login success')));
   }
@@ -58,6 +76,35 @@ Future<void> login() async {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login failed')));
 
   }
+}
+Future<void> profile(String log_id) async {
+  var data={
+    'log_id':log_id,
+  };
+  var response = await post(Uri.parse("${con.url}profile.php"),body:data );
+  print(response.body);
+  log_id=jsonDecode(response.body)['log_id'];
+  first_name=jsonDecode(response.body)['first_name'];
+  last_name=jsonDecode(response.body)['last_name'];
+  mobile_no=jsonDecode(response.body)['mobile_no'];
+  print(log_id);
+  print(first_name);
+  print(last_name);
+  print(mobile_no);
+  if (log_id!=null && first_name!=null && last_name!=null && mobile_no!=null)
+  {
+    savedata(log_id,first_name,last_name,mobile_no);
+  }
+
+  // if (jsonDecode(response.body)['result']=='Login success') {
+  //   Navigator.push(context, MaterialPageRoute(builder: (context)=>home()));
+  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login success')));
+  // }
+  // else
+  // {
+  //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Login failed')));
+  //
+  // }
 }
   //login validation
 

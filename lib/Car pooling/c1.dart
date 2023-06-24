@@ -148,19 +148,20 @@ class _c1State extends State<c1> {
                           ],
                         )),
                   ),
-                  Container(
-                    color: Colors.grey,
-                    child: ElevatedButton(onPressed: (){
-                      MapUtils.openMap(latitude, longitude);
-                    }, child:
-                       Row(
-                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.map),
-                          Text('Veiw in map')
-                        ],
-                      ),
-                    )),
+                  OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide.none
+                    ),
+                    onPressed: (){
+                    MapUtils.openMap(latitude, longitude);
+                  }, child: Row(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.map,color: Colors.teal,),
+                        Text('Veiw in map',style: TextStyle(color: Colors.teal),)
+                      ],
+                    ),
+                  ),
 
 
                   SizedBox(

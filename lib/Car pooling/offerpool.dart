@@ -70,7 +70,9 @@ SizedBox(
                             Text(widget.time,style: TextStyle(fontSize: 25,fontFamily: 'Times New Roman',fontWeight: FontWeight.w500,color: Colors.black45)),
                             Text(widget.date,style: TextStyle(fontSize: 25,fontFamily: 'Times New Roman',fontWeight: FontWeight.w500,color: Colors.black45)),
                             ElevatedButton(
-                              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                              ),
                                 onPressed: (){}, child: Text('Contact'),)
                           ],
                         ),
