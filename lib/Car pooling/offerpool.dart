@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class offerpool extends StatefulWidget {
    offerpool({Key? key,required this.starting_point,required this.destination,required this.vehicle_no,required this.time,required this.date}) : super(key: key);
 var starting_point,destination,vehicle_no,time,date;
@@ -7,6 +8,7 @@ var starting_point,destination,vehicle_no,time,date;
 }
 
 class _offerpoolState extends State<offerpool> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,7 @@ class _offerpoolState extends State<offerpool> {
             child: Column(
               children: [
                 Row(
-          children: [
+              children: [
                 IconButton(
                     onPressed: () {
                       Navigator.pop(context);
@@ -50,11 +52,25 @@ SizedBox(
                 child: Card(
                   elevation: 5,
                   child: Container(
-                    height: 250,
+                    height: 350,
                     width: double.infinity,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+
+                            Text(widget.time,style: TextStyle(fontSize: 25,fontFamily: 'Times New Roman',fontWeight: FontWeight.w500,color: Colors.black45)),
+                            Text(widget.date,style: TextStyle(fontSize: 25,fontFamily: 'Times New Roman',fontWeight: FontWeight.w500,color: Colors.black45)),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red,
+                              ),
+                              onPressed: (){}, child: Text('Contact'),)
+                          ],
+                        ),
+
                         Text(widget.starting_point,style: TextStyle(fontSize: 30,fontFamily: 'Times New Roman',fontWeight: FontWeight.bold,color: Colors.teal),),
                         Text("to",style: TextStyle(fontSize: 30,fontFamily: 'Times New Roman',fontWeight: FontWeight.bold,color: Colors.black12),),
                         Text(widget.destination,style: TextStyle(fontSize: 30,fontFamily: 'Times New Roman',fontWeight: FontWeight.bold,color: Colors.teal)),

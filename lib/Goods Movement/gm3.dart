@@ -1,5 +1,6 @@
 import 'package:corider/Car%20pooling/c4.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import 'gm4.dart';
 class gm3 extends StatefulWidget {
@@ -10,6 +11,47 @@ class gm3 extends StatefulWidget {
 }
 
 class _gm3State extends State<gm3> {
+  var pick;
+  var time_pick;
+  var select=TimeOfDay.now();
+  var starting_pointctrl=TextEditingController();
+  var destinationctrl=TextEditingController();
+  var vehicle_noctrl=TextEditingController();
+  var datectrl=TextEditingController();
+  var timectrl=TextEditingController();
+  Future<void> select_date() async {
+    final DateTime? pick= await showDatePicker(context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime.now(),
+        lastDate: DateTime(2100));
+    if (pick!=null && pick!=select_date) {
+      print(pick);
+      String formatteddate=DateFormat('yyyy-MM-dd').format(pick);
+      print(formatteddate);
+      datectrl.text=formatteddate ;
+
+      setState(() {
+        datectrl.text=formatteddate ;
+      });
+    }
+  }
+  Future<void> select_time() async {
+    final TimeOfDay?time_pick=await
+    showTimePicker(
+        context: context, initialTime: select);
+    if (time_pick!=null && time_pick!=select) {
+      print(time_pick);
+      String formattedtime=time_pick.format(context);
+      print(formattedtime);
+      setState(() {
+        // timectrl=time_pick;
+        select=time_pick;
+        timectrl.text=formattedtime ;
+
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -37,48 +79,54 @@ class _gm3State extends State<gm3> {
                   //app name
                 ],
               ),
-              CircleAvatar(
-                backgroundColor: Colors.grey,
-                radius: 50,
-                child: Center(child: IconButton(onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=>gm4()));
-                }, icon: Icon(Icons.add,size: 35,color: Colors.white70,))),
-              ),
+              // CircleAvatar(
+              //   backgroundColor: Colors.grey,
+              //   radius: 50,
+              //   child: Center(child: IconButton(onPressed: (){
+              //     Navigator.push(context, MaterialPageRoute(builder: (context)=>gm4()));
+              //   }, icon: Icon(Icons.add,size: 35,color: Colors.white70,))),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+              //   child: TextField(
+              //     style: TextStyle(color: Colors.black),
+              //     decoration: InputDecoration(
+              //         filled: true,
+              //         fillColor: Color(0xffDCDADA),
+              //         hintText: 'Name',
+              //         border: OutlineInputBorder(
+              //             borderSide: BorderSide.none,
+              //
+              //             borderRadius: BorderRadius.circular(20)
+              //         )
+              //     ),
+              //   ),
+              // ),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+              //   child: TextField(
+              //     style: TextStyle(color: Colors.black),
+              //     decoration: InputDecoration(
+              //         filled: true,
+              //         fillColor: Color(0xffDCDADA),
+              //         hintText: 'Mobile number',
+              //         border: OutlineInputBorder(
+              //             borderSide: BorderSide.none,
+              //
+              //             borderRadius: BorderRadius.circular(20)
+              //         )
+              //     ),
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Name',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Mobile number',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
+                child: TextFormField(
+                  validator: (val){
+                    if ( val!.isEmpty){
+                      return 'Field reqired';
+                    }
+                  },
+                  controller: starting_pointctrl,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       filled: true,
@@ -94,7 +142,13 @@ class _gm3State extends State<gm3> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
+                child: TextFormField(
+                  validator: (val){
+                    if ( val!.isEmpty){
+                      return 'Field reqired';
+                    }
+                  },
+                  controller: destinationctrl,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       filled: true,
@@ -110,7 +164,13 @@ class _gm3State extends State<gm3> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
+                child: TextFormField(
+                  validator: (val){
+                    if ( val!.isEmpty){
+                      return 'Field reqired';
+                    }
+                  },
+                  controller: vehicle_noctrl,
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       filled: true,
@@ -126,23 +186,19 @@ class _gm3State extends State<gm3> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Available space',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
+                child: TextFormField(
+                  validator: (val){
+                    if ( val!.isEmpty){
+                      return 'Field reqired';
+                    }
+                  },
+                  controller: timectrl,
+                  onTap: (){
 
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
+                    select_time();
+
+
+                  },
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       filled: true,
@@ -158,7 +214,19 @@ class _gm3State extends State<gm3> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
+                child: TextFormField(
+                  validator: (val){
+                    if ( val!.isEmpty){
+                      return 'Field reqired';
+                    }
+                  },
+                  controller: datectrl,
+                  onTap: (){
+                    setState(() {
+                      select_date();
+
+                    });
+                  },
                   style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
                       filled: true,

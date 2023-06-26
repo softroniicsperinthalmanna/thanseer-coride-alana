@@ -25,10 +25,31 @@ class _c3State extends State<c3> {
 
   Future<String?> getLoginId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? loginId = prefs.getString('loginId');
-    return loginId;
+    String? login_id = prefs.getString('loginId');
+    return login_id;
+  }
+  Future<Map<String?,String?>> getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? log_Id = prefs.getString('log_id');
+    String? first_name = prefs.getString('first_name');
+    String? last_name = prefs.getString('last_name');
+    String? mobile_no = prefs.getString('mobile_no');
+    return {
+      'log_id': log_Id,
+      'first_name': first_name,
+      'last_name': last_name,
+      'mobile_no': mobile_no
+    };
   }
 
+    // void profile(first_name,last_name,log_id,mobile_no) async{
+    //     Map<String?,String?>data=await getData();
+    //     String? first_name=data['first_name'];
+    //     String? last_name=data['last_name'];
+    //     String? log_id=data['log_id'];
+    //     String? mobile_no=data['mobile_no'];
+    //
+    // }
 Future<void> select_date() async {
   final DateTime? pick= await showDatePicker(context: context,
       initialDate: DateTime.now(),
@@ -65,18 +86,28 @@ Future<void> select_time() async {
 void initState(){
   super.initState();
   print(select);
+  getLoginId();
+
 }
   final offer_poolkey=GlobalKey<FormState>();
 
   Future<void> senddata()  async {
   var log_id=await getLoginId();
+  if (log_id!=null) {
+    print("log_id:$log_id");
+  }
+  else
+    {
+       print('error');
+
+    }
     var data={
       'starting_point':starting_pointctrl.text,
       'destination':destinationctrl.text,
       'vehicle_no':vehicle_noctrl.text,
       'date':datectrl.text,
       'time':timectrl.text,
-      'uid':log_id
+      'log_id':log_id
     };
     var response=await post(Uri.parse("${con.url}offer_pool/offer_pool.php"),body: data);
     print(response.body);
@@ -128,7 +159,7 @@ void initState(){
                   child: TextFormField(
                     validator: (val){
                       if ( val!.isEmpty){
-                        return 'feild reqired';
+                        return 'Field reqired';
                       }
                     },
                     controller: starting_pointctrl,
@@ -150,7 +181,7 @@ void initState(){
                   child: TextFormField(
                     validator: (val){
                       if ( val!.isEmpty){
-                        return 'feild reqired';
+                        return 'Field reqired';
                       }
                     },
                     controller: destinationctrl,
@@ -172,7 +203,7 @@ void initState(){
                   child: TextFormField(
                     validator: (val){
                       if ( val!.isEmpty){
-                        return 'feild reqired';
+                        return 'Field reqired';
                       }
                     },
                     controller: vehicle_noctrl,
@@ -194,7 +225,7 @@ void initState(){
                   child: TextFormField(
                     validator: (val){
                       if ( val!.isEmpty){
-                        return 'feild reqired';
+                        return 'Field reqired';
                       }
                     },
                     controller: timectrl,
@@ -222,7 +253,7 @@ void initState(){
                   child: TextFormField(
                     validator: (val){
                       if ( val!.isEmpty){
-                        return 'feild reqired';
+                        return 'Field reqired';
                       }
                     },
                     controller: datectrl,

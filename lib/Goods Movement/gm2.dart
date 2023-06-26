@@ -1,4 +1,9 @@
+import 'dart:convert';
+import 'package:corider/Goods%20Movement/gm_details.dart';
+import 'package:corider/connect.dart';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 
 import 'gm5.dart';
 class gm2 extends StatefulWidget {
@@ -9,12 +14,32 @@ class gm2 extends StatefulWidget {
 }
 
 class _gm2State extends State<gm2> {
+  var flag=0;
+  Future<dynamic> getdata() async {
+    var response = await post(Uri.parse("${con.url}offer_pool/view_pool.php"));
+    print(response.statusCode);
+    print(response.body);
+
+    if (response.statusCode == 200 && jsonDecode(response.body)[0]['result']=='success') {
+      flag=1;
+      return jsonDecode(response.body);
+
+    }
+    else {
+      flag=0;
+      const CircularProgressIndicator();
+      Text('no data');
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       body: SafeArea(
+
         child: SingleChildScrollView(
-          child: Column(
+          child:
+          Column(
             children: [
               Row(
                 children: [
@@ -37,121 +62,73 @@ class _gm2State extends State<gm2> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                padding: const EdgeInsets.all(15.0),
                 child: TextField(
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20
+                  ),
                   decoration: InputDecoration(
+                      hintText: 'Destination',
+                      hintStyle: TextStyle(color: Colors.white),
                       filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Pick up',
-                      border: OutlineInputBorder(
+                      fillColor: Color(0xff068DA9),
+                      prefixIcon: Icon(Icons.search_rounded,color: Colors.white,),
+                      enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide.none,
-
                           borderRadius: BorderRadius.circular(20)
+
+                      ),
+                      focusedBorder:  OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)
+
                       )
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Drop',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
+              Container(
+                height: 500,
+                child: FutureBuilder(
+                    future: getdata(),
+                    builder: (context,snapshot){
+                      if (snapshot.hasError) {
+                        print(snapshot.error);
+                      }
+                      // if (!snapshot.hasData ||snapshot.data.length==0) {
+                      // return const Center(
+                      // child: CircularProgressIndicator(),
+                      // );
+                      // }
+                      return flag==0?Center(child: CircularProgressIndicator()):
+                      ListView.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (contex,index){
+                            return InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>gm_details_page(
+                                    starting_point: snapshot.data[index]['starting_point'],
+                                    destination: snapshot.data[index]['destination'],
+                                    vehicle_no: snapshot.data[index]['vehicle_no'],
+                                    time: snapshot.data[index]['time'],
+                                    date: snapshot.data[index]['date'])));
+                              },
+                              child: ListTile(
+                                title: Text('${snapshot.data[index]['destination']}'),
+                                subtitle: Text('${snapshot.data[index]['starting_point']}'),
+                                trailing: Column(
+                                  children: [
+                                    Text('${snapshot.data[index]['time']}'),
+                                    Text('${snapshot.data[index]['date']}'),
+                                  ],
+                                ),
+                              ),
+                            );
+                          });
+                    }),
+              )
 
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Goods type',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Goods quatity',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Time  (9:00 am)',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Date   (1/10/2023)',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 0.0,top: 50),
-                child: Container(
-                  height: 60,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          backgroundColor: Color(0xff068DA9)),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm5()));
-                      }, child: Text('Search',style: TextStyle(fontSize: 20),)),
-                ),
-              ),
 
 
             ],
