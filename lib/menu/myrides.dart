@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:corider/menu/addride.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
@@ -31,6 +30,11 @@ class _myridesState extends State<myrides> {
       Text('no data');
     }
 
+  }
+  @override
+  void initState(){
+    super.initState();
+    getdata();
   }
   Future <dynamic> deletedata() async{
     print(ride_id);
@@ -90,6 +94,7 @@ class _myridesState extends State<myrides> {
                         Center(child: CircularProgressIndicator()):
                          ListView.separated(
                             itemBuilder: (context,index){
+                              print(snapshot.data.length);
                           return ListTile(
                             leading: Column(
                               children: [

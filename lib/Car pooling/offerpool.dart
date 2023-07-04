@@ -60,7 +60,6 @@ SizedBox(
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-
                             Text(widget.time,style: TextStyle(fontSize: 25,fontFamily: 'Times New Roman',fontWeight: FontWeight.w500,color: Colors.black45)),
                             Text(widget.date,style: TextStyle(fontSize: 25,fontFamily: 'Times New Roman',fontWeight: FontWeight.w500,color: Colors.black45)),
                             ElevatedButton(
