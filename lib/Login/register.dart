@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:corider/Login/otp.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
-import 'connect.dart';
+import '../connect.dart';
 class register extends StatefulWidget {
   const register({Key? key}) : super(key: key);
 
@@ -34,7 +34,7 @@ class _registerState extends State<register>{
       'mobile_no':mobile_noctrl.text,
       'password':passwordctrl.text,
     };
-    var response=await post(Uri.parse("${con.url}insert.php"),body: data);
+    var response=await post(Uri.parse("${con.url}login/insert.php"),body: data);
     print(response.body);
     if (jsonDecode(response.body)['result']=='success') {
       setState(() {

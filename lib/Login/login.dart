@@ -6,7 +6,7 @@ import 'package:corider/Login/register.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'connect.dart';
+import '../connect.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
 
@@ -81,7 +81,7 @@ Future<void> profile(String log_id) async {
   var data={
     'log_id':log_id,
   };
-  var response = await post(Uri.parse("${con.url}profile.php"),body:data );
+  var response = await post(Uri.parse("${con.url}login/profile.php"),body:data );
   print(response.body);
   log_id=jsonDecode(response.body)['log_id'];
   first_name=jsonDecode(response.body)['first_name'];

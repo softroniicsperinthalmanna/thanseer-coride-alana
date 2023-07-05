@@ -10,7 +10,6 @@ import 'package:http/http.dart';
 import 'current_location.dart';
 import 'location.dart';
 import 'connect_location.dart';
-
 class c1 extends StatefulWidget {
   c1({Key? key}) : super(key: key);
   @override
