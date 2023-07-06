@@ -61,7 +61,7 @@ Future<void> login() async {
     'mobile_no':_mobilenoController.text,
     'password':_passwordController.text
   };
-  var response = await post(Uri.parse("${con.url}login.php"),body:data );
+  var response = await post(Uri.parse("${con.url}login/login.php"),body:data );
   print(response.body);
 
 

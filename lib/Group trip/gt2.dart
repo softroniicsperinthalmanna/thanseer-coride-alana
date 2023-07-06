@@ -1,4 +1,11 @@
+import 'dart:convert';
+import 'package:corider/Goods%20Movement/gm_details.dart';
+import 'package:corider/Group%20trip/gt_detail.dart';
+import 'package:corider/connect.dart';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
+
 class gt2 extends StatefulWidget {
   const gt2({Key? key}) : super(key: key);
 
@@ -7,12 +14,32 @@ class gt2 extends StatefulWidget {
 }
 
 class _gt2State extends State<gt2> {
+  var flag=0;
+  Future<dynamic> getdata() async {
+    var response = await post(Uri.parse("${con.url}group_trip/view.php"));
+    print(response.statusCode);
+    print(response.body);
+
+    if (response.statusCode == 200 && jsonDecode(response.body)[0]['result']=='success') {
+      flag=1;
+      return jsonDecode(response.body);
+
+    }
+    else {
+      flag=0;
+      const CircularProgressIndicator();
+      Text('no data');
+    }
+
+  }
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       body: SafeArea(
+
         child: SingleChildScrollView(
-          child: Column(
+          child:
+          Column(
             children: [
               Row(
                 children: [
@@ -35,72 +62,79 @@ class _gt2State extends State<gt2> {
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                padding: const EdgeInsets.all(15.0),
                 child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Starting location',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20
                   ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
                   decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color(0xffDCDADA),
                       hintText: 'Destination',
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-
-                          borderRadius: BorderRadius.circular(20)
-                      )
-                  ),
-                ),
-              ),
-
-              Padding(
-                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-                child: TextField(
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
+                      hintStyle: TextStyle(color: Colors.white),
                       filled: true,
-                      fillColor: Color(0xffDCDADA),
-                      hintText: 'Date   (1/10/2023)',
-                      border: OutlineInputBorder(
+                      fillColor: Color(0xff068DA9),
+                      prefixIcon: Icon(Icons.search_rounded,color: Colors.white,),
+                      enabledBorder: OutlineInputBorder(
                           borderSide: BorderSide.none,
-
                           borderRadius: BorderRadius.circular(20)
+
+                      ),
+                      focusedBorder:  OutlineInputBorder(
+                          borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)
+
                       )
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 0.0,top: 50),
-                child: Container(
-                  height: 60,
-                  width: 150,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20)
-                  ),
-                  child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          backgroundColor: Color(0xff068DA9)),
-                      onPressed: (){
-                      }, child: Text('Search',style: TextStyle(fontSize: 20),)),
-                ),
-              ),
+              Container(
+                height: 500,
+                child: FutureBuilder(
+                    future: getdata(),
+                    builder: (context,snapshot){
+                      if (snapshot.hasError) {
+                        print(snapshot.error);
+                      }
+                      // if (!snapshot.hasData ||snapshot.data.length==0) {
+                      // return const Center(
+                      // child: CircularProgressIndicator(),
+                      // );
+                      // }
+                      return flag==0?Center(child: CircularProgressIndicator()):
+                      ListView.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (contex,index){
+                            return InkWell(
+                              onTap: (){
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>gt_detail(
+                                    starting_point: snapshot.data[index]['starting_point'],
+                                    destination: snapshot.data[index]['destination'],
+                                    vehicle_no: snapshot.data[index]['vehicle_no'],
+                                    date: snapshot.data[index]['date'], 
+                                  first_name: snapshot.data[index]['first_name'],
+                                  last_name: snapshot.data[index]['last_name'],
+                                  mobile_no: snapshot.data[index]['mobile_no'],
+                                  vehicle_type: snapshot.data[index]['vehicle_type'],
+                                  group_name: snapshot.data[index]['group_name'], )));
+                              },
+                              child: ListTile(
+                                title: Text('${snapshot.data[index]['destination']}'),
+                                subtitle: Text('${snapshot.data[index]['starting_point']}'),
+                                trailing: Column(
+                                  children: [
+                                    Text('${snapshot.data[index]['date']}'),
+                                    Text('${snapshot.data[index]['vehicle_type']}'),
+
+
+                                  ],
+                                ),
+                              ),
+                            );
+                          });
+                    }),
+              )
+
 
 
             ],

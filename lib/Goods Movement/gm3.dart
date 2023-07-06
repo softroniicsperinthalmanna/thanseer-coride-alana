@@ -1,7 +1,10 @@
 import 'package:corider/Car%20pooling/c4.dart';
+import 'package:corider/Goods%20Movement/gm2.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
+import '../connect.dart';
 import 'gm4.dart';
 class gm3 extends StatefulWidget {
   const gm3({Key? key}) : super(key: key);
@@ -50,6 +53,43 @@ class _gm3State extends State<gm3> {
 
       });
     }
+  }
+  Future<String?> getLoginId() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? login_id = prefs.getString('loginId');
+    return login_id;
+  }
+  @override
+  void initstate(){
+    super.initState();
+    getLoginId();
+  }
+  Future<void> senddata()  async {
+    var log_id=await getLoginId();
+    if (log_id!=null) {
+      print("log_id:$log_id");
+    }
+    else
+    {
+      print('error');
+
+    }
+    var data={
+      'starting_point':starting_pointctrl.text,
+      'destination':destinationctrl.text,
+      'vehicle_no':vehicle_noctrl.text,
+      'date':datectrl.text,
+      'time':timectrl.text,
+      'log_id':log_id
+    };
+    var response=await post(Uri.parse("${con.url}goods_movement/goods.php"),body: data);
+    print(response.body);
+    if (response.statusCode==200) {
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Goods movement added')));
+      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context)=>gm2()),(Route <dynamic> route )=>false);
+    }
+
   }
 
   @override
@@ -241,10 +281,10 @@ class _gm3State extends State<gm3> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 0.0,top: 50),
+                padding: const EdgeInsets.only(left: 0.0,top: 20),
                 child: Container(
                   height: 60,
-                  width: 150,
+                  width: 100,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20)
                   ),
@@ -255,7 +295,10 @@ class _gm3State extends State<gm3> {
                           ),
                           backgroundColor: Color(0xff068DA9)),
                       onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm4()));
+                        setState(() {
+                          senddata();
+                        });
+                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>gm4()));
                       }, child: Text('Add',style: TextStyle(fontSize: 20),)),
                 ),
               ),

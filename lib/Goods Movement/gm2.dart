@@ -16,7 +16,7 @@ class gm2 extends StatefulWidget {
 class _gm2State extends State<gm2> {
   var flag=0;
   Future<dynamic> getdata() async {
-    var response = await post(Uri.parse("${con.url}offer_pool/view_pool.php"));
+    var response = await post(Uri.parse("${con.url}goods_movement/read_goods.php"));
     print(response.statusCode);
     print(response.body);
 

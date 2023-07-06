@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:corider/Car%20pooling/c4edit.dart';
+import 'package:corider/Goods%20Movement/gm4.dart';
 import 'package:corider/Login/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../connect.dart';
@@ -88,6 +89,7 @@ class _c4State extends State<c4> {
               child: Column(
                 children: [
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(onPressed: (){
                         Navigator.pop(context);
@@ -102,6 +104,14 @@ class _c4State extends State<c4> {
                             fontFamily: 'Times New Roman'
                         ),),
                       ),
+                      TextButton(onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm4()));
+                      }, child: Text('Goods Movement',
+                          style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: 'Times New Roman',
+                              color:Color(0xff068DA9), )),)
 
 
                       //app name
@@ -176,8 +186,8 @@ class _c4State extends State<c4> {
                                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                                               children: [
                                                 Text('${snapshot.data[index]['vehicle_no']}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                                                Text('${snapshot.data[index]['log_id']}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
-                                                Text('${snapshot.data[index]['pool_id']}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                                // Text('${snapshot.data[index]['log_id']}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
+                                                // Text('${snapshot.data[index]['pool_id']}',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),),
 
                                               ],
                                             ),
