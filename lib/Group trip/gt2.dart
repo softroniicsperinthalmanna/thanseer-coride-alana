@@ -119,13 +119,12 @@ class _gt2State extends State<gt2> {
                                   group_name: snapshot.data[index]['group_name'], )));
                               },
                               child: ListTile(
-                                title: Text('${snapshot.data[index]['destination']}'),
-                                subtitle: Text('${snapshot.data[index]['starting_point']}'),
+                                title: Text('${snapshot.data[index]['destination']}'.toUpperCase()),
+                                subtitle: Text('${snapshot.data[index]['starting_point']}'.toUpperCase()),
                                 trailing: Column(
                                   children: [
                                     Text('${snapshot.data[index]['date']}'),
-                                    Text('${snapshot.data[index]['vehicle_type']}'),
-
+                                    Text('${snapshot.data[index]['vehicle_type']}'.toUpperCase()),
 
                                   ],
                                 ),

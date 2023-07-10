@@ -2,6 +2,7 @@ import 'package:corider/Car%20pooling/c1.dart';
 import 'package:corider/Car%20pooling/c4.dart';
 import 'package:corider/Goods%20Movement/gm1.dart';
 import 'package:corider/Group%20trip/gt1.dart';
+import 'package:corider/Group%20trip/gt4.dart';
 import 'package:corider/Login/login.dart';
 import 'package:corider/Rental%20cars/r1.dart';
 import 'package:corider/menu/help.dart';
@@ -140,6 +141,20 @@ class _h1State extends State<h1> {
                 child: ListTile(
                   leading: Icon(Icons.reviews_outlined),
                   title: Text('Review'),
+
+                ),
+              ),
+              Divider(
+                thickness: 2,
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => gt4()));
+                },
+                child: ListTile(
+                  leading: Icon(Icons.group),
+                  title: Text('Group created'),
 
                 ),
               ),
