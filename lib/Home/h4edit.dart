@@ -11,38 +11,39 @@ class _h4editState extends State<h4edit> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                IconButton(onPressed: (){
-                  Navigator.pop(context);
-                }, icon: Icon(Icons.arrow_back_ios_new)),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  IconButton(onPressed: (){
+                    Navigator.pop(context);
+                  }, icon: Icon(Icons.arrow_back_ios_new)),
 
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text('GO Share',style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xff068DA9),
-                      fontFamily: 'Times New Roman'
-                  ),),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text('GO Share',style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500,
+                        color: Color(0xff068DA9),
+                        fontFamily: 'Times New Roman'
+                    ),),
+                  ),
 
-                //app name
-              ],
-            ),
-            SizedBox(height: 10,),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text('Edit Profile')),
-            ),
-            CircleAvatar(
-              backgroundImage: AssetImage('assets/home/h (1).jpeg'),
-              radius: 60,
-            ),
+                  //app name
+                ],
+              ),
+              SizedBox(height: 10,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text('Edit Profile')),
+              ),
+              CircleAvatar(
+                backgroundImage: AssetImage('assets/home/h (1).jpeg'),
+                radius: 60,
+              ),
     SizedBox(height: 35,),
     Padding(
     padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
@@ -59,83 +60,84 @@ class _h4editState extends State<h4edit> {
     )
     ),
     ),),
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-              child: TextField(
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffDCDADA),
-                    hintText: 'Last name',
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                child: TextField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffDCDADA),
+                      hintText: 'Last name',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
 
-                        borderRadius: BorderRadius.circular(20)
-                    )
-                ),
-              ),),
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-              child: TextField(
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffDCDADA),
-                    hintText: 'Username',
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                child: TextField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffDCDADA),
+                      hintText: 'Username',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
 
-                        borderRadius: BorderRadius.circular(20)
-                    )
-                ),
-              ),),
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-              child: TextField(
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffDCDADA),
-                    hintText: 'Mobile no.',
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                child: TextField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffDCDADA),
+                      hintText: 'Mobile no.',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
 
-                        borderRadius: BorderRadius.circular(20)
-                    )
-                ),
-              ),),
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-              child: TextField(
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffDCDADA),
-                    hintText: 'Bio',
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                child: TextField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffDCDADA),
+                      hintText: 'Bio',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
 
-                        borderRadius: BorderRadius.circular(20)
-                    )
-                ),
-              ),),
-            Padding(
-              padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
-              child: TextField(
-                style: TextStyle(color: Colors.black),
-                decoration: InputDecoration(
-                    filled: true,
-                    fillColor: Color(0xffDCDADA),
-                    hintText: 'Email ',
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),),
+              Padding(
+                padding: const EdgeInsets.only(top: 18.0,left:10,right: 10),
+                child: TextField(
+                  style: TextStyle(color: Colors.black),
+                  decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color(0xffDCDADA),
+                      hintText: 'Email ',
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide.none,
 
-                        borderRadius: BorderRadius.circular(20)
-                    )
-                ),
-              ),),
+                          borderRadius: BorderRadius.circular(20)
+                      )
+                  ),
+                ),),
 
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -36,7 +36,7 @@ class _h4State extends State<h4> {
     print(response.statusCode);
     print(response.body);
 
-    if (response.statusCode == 200 && jsonDecode(response.body)[0]['result']=='success') {
+    if (response.statusCode == 200 && jsonDecode(response.body)['result']=='success') {
       flag=1;
       return jsonDecode(response.body);
 
@@ -117,12 +117,36 @@ class _h4State extends State<h4> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: IconButton(onPressed: (){
+                  Navigator.pop(context);
+        }, icon: Icon(Icons.arrow_back_ios_new,color: Colors.black,)),
+        actions: [
+          Row(
+            children: [
+              Text('GO Share  ',style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff068DA9),
+                  fontFamily: 'Times New Roman'
+              ),),
+              IconButton(onPressed: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>h4edit()));
+              }, icon: Icon(Icons.edit,size: 25,color:Color(0xff068DA9),))
+
+            ],
+          ), //app name
+        ],
+      ),
+
       body:
       SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+
               FutureBuilder(
                   future: getdata(),
                   builder: (context, snapshot) {
@@ -141,74 +165,103 @@ class _h4State extends State<h4> {
                         itemBuilder: (BuildContext context, int index) {
 
                           return  Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                elevation: 5,
-                                child: Column(
-                                  children: [
-                                    SizedBox(height: 10,),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        // IconButton(onPressed: (){
-                                        //   print(snapshot.data[index]['starting_point']);
-                                        //   print(snapshot.data[index]['destination']);
-                                        //   print(snapshot.data[index]['date']);
-                                        //   print(snapshot.data[index]['vehicle_no']);
-                                        //   print(snapshot.data[index]['vehicle_type']);
-                                        //   print(snapshot.data[index]['mobile_no']);
-                                        //   print(snapshot.data[index]['group_name']);
+                              padding: const EdgeInsets.all(18.0),
+                              child: Column(
+                                children: [
+                                  CircleAvatar(
+                                    backgroundImage: AssetImage('${snapshot.data['image']}'),
+                                    radius: 60,
+                                  ),
+                                  SizedBox(height: 10,),
+                                  Text('${snapshot.data['username']} '.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
 
-                                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>gt5(
-                                          //   starting_point: snapshot.data[index]['starting_point'],
-                                          //   destination: snapshot.data[index]['destination'],
-                                          //   date: snapshot.data[index]['date'],
-                                          //   vehicle_no: snapshot.data[index]['vehicle_no'],
-                                          //   gt_id: snapshot.data[index]['gt_id'],
-                                          //   group_name: snapshot.data[index]['group_name'],
-                                          //   vehicle_type: snapshot.data[index]['vehicle_type'],
-                                          // )
-                                          // )
-                                          // );
-                                        // }, icon: Icon(Icons.edit))      ,
-                                        // IconButton(onPressed: (){
-                                        //   gm_id=snapshot.data[index]['gt_it'];
-                                        //   setState(() {
-                                        //     // deletedata();
-                                        //   });
-                                        // }, icon: Icon(Icons.delete))      ,
+                                  SizedBox(height: 10,),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
 
-                                      ],
-                                    ),
-                                    Container(
-                                        width: MediaQuery.of(context).size.width,
-                                        height: 250,
-                                        child: Column(
-                                          children: [
-                                            SizedBox(height: 10,),
+                                      // IconButton(onPressed: (){
+                                      //   print(snapshot.data[index]['starting_point']);
+                                      //   print(snapshot.data[index]['destination']);
+                                      //   print(snapshot.data[index]['date']);
+                                      //   print(snapshot.data[index]['vehicle_no']);
+                                      //   print(snapshot.data[index]['vehicle_type']);
+                                      //   print(snapshot.data[index]['mobile_no']);
+                                      //   print(snapshot.data[index]['group_name']);
 
-                                            Text('${snapshot.data[index]['first_name']}'.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
-                                            SizedBox(height: 10,),
+                                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>gt5(
+                                        //   starting_point: snapshot.data[index]['starting_point'],
+                                        //   destination: snapshot.data[index]['destination'],
+                                        //   date: snapshot.data[index]['date'],
+                                        //   vehicle_no: snapshot.data[index]['vehicle_no'],
+                                        //   gt_id: snapshot.data[index]['gt_id'],
+                                        //   group_name: snapshot.data[index]['group_name'],
+                                        //   vehicle_type: snapshot.data[index]['vehicle_type'],
+                                        // )
+                                        // )
+                                        // );
+                                      // }, icon: Icon(Icons.edit))      ,
+                                      // IconButton(onPressed: (){
+                                      //   gm_id=snapshot.data[index]['gt_it'];
+                                      //   setState(() {
+                                      //     // deletedata();
+                                      //   });
+                                      // }, icon: Icon(Icons.delete))      ,
 
-                                            SingleChildScrollView(
-                                              scrollDirection: Axis.horizontal,
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                                children: [
-                                                  Text('${snapshot.data[index]['last_name']}'.toUpperCase(),style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color:Colors.black),),
-                                                  SizedBox(width: 10,),
-                                                  Text('${snapshot.data[index]['mobile_no']}'.toUpperCase(),style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color:Colors.black),),
+                                    ],
+                                  ),
+                                  Container(
+                                      width: MediaQuery.of(context).size.width,
+                                      height: 250,
+                                      child: Column(
+                                        children: [
+                                          Divider(
+                                            thickness: 2,
 
-                                                ],
-                                              ),
-                                            ),
-                                            SizedBox(height: 10,),
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text('Name:'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.black),),
+                                              Text('${snapshot.data['first_name']}  ${snapshot.data['last_name']}'.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
 
-                                          ],
-                                        )
-                                    )
-                                  ],
-                                ),
+                                              SizedBox(width: 10,),
+                                            ],
+                                          ),
+                                          Divider(
+                                            thickness: 2,
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text('Mobile_no:'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.black),),
+                                              Text('${snapshot.data['mobile_no']}'.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
+
+                                              SizedBox(width: 10,),
+                                            ],
+                                          ),
+                                          Divider(
+                                            thickness: 2,
+
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text('Email:'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.black),),
+                                              Text('${snapshot.data['email']}'.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
+
+                                              SizedBox(width: 10,),
+                                            ],
+                                          ),
+
+
+                                        ],
+                                      )
+                                  )
+                                ],
                               )
 
 
