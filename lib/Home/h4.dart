@@ -1,9 +1,9 @@
 import 'dart:convert';
-
 import 'package:corider/Home/h4edit.dart';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
+import 'package:get/get.dart';
 import '../connect.dart';
+import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 class h4 extends StatefulWidget {
   const h4({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class h4 extends StatefulWidget {
 class _h4State extends State<h4> {
   var log_id;
   var flag;
-  var last_name;
+  // var last_name;
   var mobile_no;
   Future<String?> getLoginId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -131,9 +131,6 @@ class _h4State extends State<h4> {
                   color: Color(0xff068DA9),
                   fontFamily: 'Times New Roman'
               ),),
-              IconButton(onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>h4edit()));
-              }, icon: Icon(Icons.edit,size: 25,color:Color(0xff068DA9),))
 
             ],
           ), //app name
@@ -167,14 +164,28 @@ class _h4State extends State<h4> {
                           return  Padding(
                               padding: const EdgeInsets.all(18.0),
                               child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   CircleAvatar(
-                                    backgroundImage: AssetImage('${snapshot.data['image']}'),
-                                    radius: 60,
+                                    backgroundImage: NetworkImage('${con.url}login/image/${snapshot.data['dp']}'),
+                                    radius: 90,
                                   ),
                                   SizedBox(height: 10,),
-                                  Text('${snapshot.data['username']} '.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
-
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text('${snapshot.data['username']} '.toLowerCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color:Color(0xff068DA9)),),
+                                      IconButton(onPressed: (){
+                                        Navigator.push(context, MaterialPageRoute(builder: (context)=> h4edit(
+                                            first_name: snapshot.data['first_name'],
+                                            last_name: snapshot.data['last_name'],
+                                            username: snapshot.data['username'],
+                                            email: snapshot.data['email'],
+                                            dp: snapshot.data['dp'],
+                                          register_id: snapshot.data['register_id'],)));
+                                      }, icon: Icon(Icons.edit,size: 25,color:Color(0xff068DA9),)),
+                                    ],
+                                  ),
                                   SizedBox(height: 10,),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -215,46 +226,59 @@ class _h4State extends State<h4> {
                                       height: 250,
                                       child: Column(
                                         children: [
-                                          Divider(
-                                            thickness: 2,
+                                          SizedBox(height: 30,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text('First name:'.toLowerCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
+                                              Text(':'.toUpperCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
 
+                                              Text('${snapshot.data['first_name']} '.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color:Color(0xff068DA9),),),
+                                              SizedBox(width: 10,),
+                                            ],
+                                          ),
+                                          Divider(
+                                            thickness: 1,
                                           ),
                                           SizedBox(height: 10,),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-                                              Text('Name:'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.black),),
-                                              Text('${snapshot.data['first_name']}  ${snapshot.data['last_name']}'.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
+                                              Text('last_name:'.toLowerCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
+                                              Text(':'.toUpperCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
+
+                                              Text('${snapshot.data['last_name']}'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color:Color(0xff068DA9),),),
+                                              SizedBox(width: 10,),
+                                            ],
+                                          ),
+                                          Divider(
+                                            thickness: 1,
+                                          ),
+                                          SizedBox(height: 10,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Text('Mobile_no'.toLowerCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
+                                              Text(':'.toUpperCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
+                                              Text('${snapshot.data['mobile_no']}'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color:Color(0xff068DA9),),),
 
                                               SizedBox(width: 10,),
                                             ],
                                           ),
                                           Divider(
-                                            thickness: 2,
+                                            thickness: 1,
                                           ),
                                           SizedBox(height: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text('Mobile_no:'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.black),),
-                                              Text('${snapshot.data['mobile_no']}'.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
-
-                                              SizedBox(width: 10,),
-                                            ],
-                                          ),
-                                          Divider(
-                                            thickness: 2,
-
-                                          ),
-                                          SizedBox(height: 10,),
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                            children: [
-                                              Text('Email:'.toUpperCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color: Colors.black),),
-                                              Text('${snapshot.data['email']}'.toUpperCase(),style: TextStyle(fontSize: 24,fontWeight: FontWeight.bold,color: Colors.teal),),
-
-                                              SizedBox(width: 10,),
-                                            ],
+                                          SingleChildScrollView(
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text('Email:'.toLowerCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
+                                                Text(':'.toLowerCase(),style: TextStyle(fontSize: 18,fontWeight: FontWeight.w400,color: Colors.black),),
+                                                Text('${snapshot.data['email']}'.toLowerCase(),style: TextStyle(fontSize: 20,fontWeight: FontWeight.w400,color:Color(0xff068DA9),),),
+                                                SizedBox(width: 10,),
+                                              ],
+                                            ),
                                           ),
 
 
@@ -346,7 +370,7 @@ class _h4State extends State<h4> {
             ],
           ),
         ),
-      ), 
+      ),
 
 
     );

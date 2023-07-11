@@ -131,6 +131,7 @@ Future<void> profile(String log_id) async {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 30),
                   child: TextFormField(
+                    keyboardType: TextInputType.numberWithOptions(),
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your mobilenumber';
