@@ -19,10 +19,15 @@ if($sql->num_rows>0 && $sql2->num_rows>0)
 {
     while($row=mysqli_fetch_assoc($sql))
         {
-          $myarray['result']=' success';
+          $myarray['result']='success';
           $myarray['log_id']=$row['log_id'];
+          $myarray['register_id']=$row['register_id'];
           $myarray['first_name']=$row['first_name'];
           $myarray['last_name']=$row['last_name'];
+          $myarray['username']=$row['username'];
+          $myarray['dp']=$row['dp'];
+          $myarray['email']=$row['email'];
+
 
           array_push($list,$myarray);
 
