@@ -140,8 +140,8 @@ class _h4editState extends State<h4edit> {
                         child: Text('Edit Profile')),
                   ),
                   CircleAvatar(
-                    backgroundImage: AssetImage('assets/home/h (1).jpeg'),
-                    radius: 60,
+                    backgroundImage: NetworkImage('${con.url}login/image/${widget.dp}'),
+                    radius: 100,
                   ),
     SizedBox(height: 35,),
                   Padding(

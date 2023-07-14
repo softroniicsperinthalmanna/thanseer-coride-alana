@@ -215,15 +215,15 @@ Future<void> profile(String log_id) async {
                children: [
                  Padding(
                    padding: const EdgeInsets.all(40),
-                   child: Row(
-                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                     children: [
-                       IconButton(onPressed: (){}, icon: Icon(Icons.facebook,size: 50,color: Color(0xff3b5998),)),
-                       IconButton(onPressed: (){}, icon: Icon(Icons.gps_fixed,size: 50,color: Colors.lightGreen,)),
-                       IconButton(onPressed: (){}, icon: Icon(Icons.g_mobiledata,size: 50,color: Colors.brown,)),
-
-                     ],
-                   ),
+                   // child: Row(
+                   //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   //   children: [
+                   //     IconButton(onPressed: (){}, icon: Icon(Icons.facebook,size: 50,color: Color(0xff3b5998),)),
+                   //     IconButton(onPressed: (){}, icon: Icon(Icons.gps_fixed,size: 50,color: Colors.lightGreen,)),
+                   //     IconButton(onPressed: (){}, icon: Icon(Icons.g_mobiledata,size: 50,color: Colors.brown,)),
+                   //
+                   //   ],
+                   // ),
                  ),
 
                  Container(
