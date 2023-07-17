@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:corider/Goods%20Movement/gm_details.dart';
 import 'package:corider/Group%20trip/gt_detail.dart';
-
 import '../Car pooling/offerpool.dart';
 import '../connect.dart';
 import 'package:corider/Home/h1.dart';
@@ -69,8 +68,6 @@ class _h2State extends State<h2> {
     }
 
   }
-
-
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
