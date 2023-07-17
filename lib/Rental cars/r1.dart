@@ -158,7 +158,6 @@ body: SafeArea(
                                             img: 'assets/home/h (3).jpeg',
                                             name: '${snapshot.data[index]['name']}',
                                             number: '${snapshot.data[index]['mobile_no']}',
-                                            seat: '4',
                                             vehicle: '${snapshot.data[index]['vehicle_model']}',
                                             price: '${snapshot.data[index]['price']}',
                                             status: '${snapshot.data[index]['vehicle_no']}')));

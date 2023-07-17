@@ -4,6 +4,7 @@ import 'package:corider/Home/Home.dart';
 import 'package:corider/Login/forgotpassword.dart';
 import 'package:corider/Login/register.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../connect.dart';
@@ -120,21 +121,29 @@ Future<void> profile(String log_id) async {
                  Center(
                    child: Padding(
                      padding: const EdgeInsets.only(top: 100),
-                     child: Text('GO Share',style: TextStyle(
+                     child: Text('GO Share',style: GoogleFonts.gruppo(
                          fontSize: 35,
-                         fontWeight: FontWeight.w500,
+                         fontWeight: FontWeight.bold,
                          color: Color(0xff068DA9),
-                          fontFamily: 'Times New Roman'
+                          // fontFamily: 'Times New Roman'
                      ),),
                    ),
                  ),
+                Container(
+                    height: 200,
+                    width: 200,
+                    child: Opacity
+                      (
+                        opacity: 0.5,
+                        child: Image(image: AssetImage('assets/login/a.png'),fit: BoxFit.cover,))),
+
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 30),
                   child: TextFormField(
                     keyboardType: TextInputType.numberWithOptions(),
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter your mobilenumber';
+                        return 'Please enter your mobile number';
                       }
                       return null;
                     },
@@ -170,7 +179,7 @@ Future<void> profile(String log_id) async {
                             visible_password=!visible_password;
                             print(visible_password);
                           });
-                        }, icon:(visible_password)?Icon(Icons.visibility_off):Icon(Icons.visibility)),
+                        }, icon:(visible_password)?Icon(Icons.visibility_off,color: Color(0xff068DA9),):Icon(Icons.visibility,color: Color(0xff068DA9),)),
 
                         filled: true,
                         fillColor: Color(0xffDCDADA),
@@ -186,7 +195,7 @@ Future<void> profile(String log_id) async {
                   padding: const EdgeInsets.only(left: 225.0),
                   child: TextButton(onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>forgot()));
-                  }, child: Text('forgote password?',style:TextStyle(color: Colors.black),)),
+                  }, child: Text('forget password?',style:GoogleFonts.alexandria(color: Colors.black),)),
                 ),
                 Container(
                   height: 50,
@@ -211,41 +220,16 @@ Future<void> profile(String log_id) async {
                   height:15,
                 ),
                 Text('Login With ',style: TextStyle(fontSize: 14),),
-               Stack(
-               children: [
-                 Padding(
-                   padding: const EdgeInsets.all(40),
-                   // child: Row(
-                   //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                   //   children: [
-                   //     IconButton(onPressed: (){}, icon: Icon(Icons.facebook,size: 50,color: Color(0xff3b5998),)),
-                   //     IconButton(onPressed: (){}, icon: Icon(Icons.gps_fixed,size: 50,color: Colors.lightGreen,)),
-                   //     IconButton(onPressed: (){}, icon: Icon(Icons.g_mobiledata,size: 50,color: Colors.brown,)),
-                   //
-                   //   ],
-                   // ),
-                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('Dont have an Account? '),
+                    TextButton(onPressed: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>register()));
+                    }, child: Text('Signup'))
+                  ],
+                ),
 
-                 Container(
-                  height: 250,
-                width: 350,
-                child: Opacity
-                  (
-                  opacity: 0.2,
-                    child: Image(image: AssetImage('assets/login/l.jpg'),fit: BoxFit.cover,))),
-                 Positioned(
-                   left: 100,
-                   child: Row(
-                     children: [
-                       Text('Dont have an Account? '),
-                       TextButton(onPressed: (){
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>register()));
-                       }, child: Text('Signup'))
-                     ],
-                   ),
-                 )
-        ],
-      ),
                 ]),
           )
 

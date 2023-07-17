@@ -29,41 +29,41 @@ class gm1 extends StatelessWidget {
                 //app name
               ],
             ),
-            SizedBox(
-              height: 150,
-            ),
-            Card(
-              elevation: 10,
-              child: Container(
-                  height: 70,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm2()));
-                      }, child: Text(
-                    'Find Goods carrier',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
-            ),
-            SizedBox(height: 30,),
-            Card(
-              elevation: 10,
-              child: Container(
-                  height: 70,
-                  width: double.infinity,
-                  child: ElevatedButton(
-                      style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
-                      onPressed: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm3()));
-                      }, child: Text(
-                    'Offer Goods carrier',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
-            ),
             Container(
                 height: 264,
                 width: 350,
-                child: Opacity
-                  (
-                    opacity: 0.2,
-                    child: Image(image: AssetImage('assets/login/l.jpg'),fit: BoxFit.cover,))),
+                child: Image(image: AssetImage('assets/login/gd2.png'),fit: BoxFit.contain,)),
+
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+                height: 70,
+                width: double.infinity,
+                child:Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: OutlinedButton(
+                      style: ButtonStyle(
+                          side: MaterialStateProperty.all(BorderSide(color: Color(0xff068DA9)))),
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm2()));
+                      }, child: Text(
+                    'Find Goods carrier',style: TextStyle(color: Color(0xff068DA9),fontWeight: FontWeight.bold,fontSize: 20),)),
+                )),
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  height: 70,
+                  width: double.infinity,
+                  child:OutlinedButton(
+                      style: ButtonStyle(
+                          side: MaterialStateProperty.all(BorderSide(color: Color(0xff068DA9)))),
+                      onPressed: (){
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>gm3()));
+                      }, child: Text(
+                    'Offer Goods carrier',style: TextStyle(color: Color(0xff068DA9),fontWeight: FontWeight.bold,fontSize: 20),))),
+            ),
 
 
 

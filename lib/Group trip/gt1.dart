@@ -30,43 +30,43 @@ class gt1 extends StatelessWidget {
               ],
             ),
             SizedBox(
-              height: 139,
+              height: 20,
             ),
-            Card(
-              elevation: 10,
+            Container(
+                height: 280,
+                width: 350,
+                child: Image(image: AssetImage('assets/login/gt.png'),fit: BoxFit.contain,)),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Container(
-                  height: 70,
+                  height: 60,
                   width: double.infinity,
-                  child: ElevatedButton(
-                      style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
+                  child: OutlinedButton(
+                      style: ButtonStyle(
+                          side: MaterialStateProperty.all(BorderSide(color: Color(0xff068DA9)))),
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>gt2()));
 
                       }, child: Text(
-                    'Find group trip',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
+                    'Find group trip',style: TextStyle(color:  Color(0xff068DA9),fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
-            SizedBox(height: 25,),
-            Card(
-              elevation: 10,
+            SizedBox(height: 10,),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Container(
-                  height: 70,
+                  height: 60,
                   width: double.infinity,
-                  child: ElevatedButton(
-                      style:ElevatedButton.styleFrom(backgroundColor: Colors.white70),
+                  child: OutlinedButton(
+                      style: ButtonStyle(
+                          side: MaterialStateProperty.all(BorderSide(color: Color(0xff068DA9)))),
                       onPressed: (){
                         Navigator.push(context, MaterialPageRoute(builder: (context)=>gt3()));
 
                       }, child: Text(
-                    'Create group trip',style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 20),))),
+                    'Create group trip',style: TextStyle(color: Color(0xff068DA9),fontWeight: FontWeight.bold,fontSize: 20),))),
             ),
 
-            Container(
-                height: 280,
-                width: 350,
-                child: Opacity
-                  (
-                    opacity: 0.2,
-                    child: Image(image: AssetImage('assets/login/l.jpg'),fit: BoxFit.cover,))),
 
           ],
 

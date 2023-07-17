@@ -16,7 +16,6 @@ class h4 extends StatefulWidget {
 class _h4State extends State<h4> {
   var log_id;
   var flag;
-  // var last_name;
   var mobile_no;
   Future<String?> getLoginId() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 class r2 extends StatefulWidget {
    r2({Key? key,required this.img,required this.name,
-    required this.number,required this.seat,
+    required this.number,
     required this.vehicle,required this.price,
     required this.status,}) : super(key: key);
 var img,name,status,seat,price,vehicle,number;

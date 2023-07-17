@@ -167,41 +167,41 @@ class _c1State extends State<c1> {
                     height: 5,
                   ),
 
-                  Visibility(
-                    // visible: (widget.reportType=='missing')?false:true,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Visibility(
+                      // visible: (widget.reportType=='missing')?false:true,
 
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black12,
-                          shape: RoundedRectangleBorder(
-                              // side: BorderSide(color: vio)
-                              )),
-                      onPressed: () async {
-                        await controller.getCurrentLocation().toString();
-                        location=   controller.currentLocation!;
-                        locality=controller.locality;
-                        street=controller.street;
-                        sublocality=controller.sublocality;
-                        subadminstrative=controller.subadminstartive;
-                        controller.currentLocation==null?'--no Llocation selected--':
-                        controller.currentLocation==null?'--wait for a while to get location or tap again below after a few seconds':
-                        controller.currentLocation!;
-                        latitude=controller.myLat;
-                        longitude=controller.myLong;
-                        print('My Lattitude :$latitude');
-                        print('My longitude:$longitude');
-                        print('My Location :$locality');
-                        print('My Location :$street');
-                        print('My Location :$sublocality');
-                        print('My Location :$subadminstrative');
-                        senddata();
-                      },
-                      child: Center(
-                        child: ListTile(
-                          title: Text(
-                            'Get My Location',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                      child: OutlinedButton(
+                        style: ButtonStyle(
+                            side: MaterialStateProperty.all(BorderSide(color: Colors.black))),
+                        onPressed: () async {
+                          await controller.getCurrentLocation().toString();
+                          location=   controller.currentLocation!;
+                          locality=controller.locality;
+                          street=controller.street;
+                          sublocality=controller.sublocality;
+                          subadminstrative=controller.subadminstartive;
+                          controller.currentLocation==null?'--no Llocation selected--':
+                          controller.currentLocation==null?'--wait for a while to get location or tap again below after a few seconds':
+                          controller.currentLocation!;
+                          latitude=controller.myLat;
+                          longitude=controller.myLong;
+                          print('My Lattitude :$latitude');
+                          print('My longitude:$longitude');
+                          print('My Location :$locality');
+                          print('My Location :$street');
+                          print('My Location :$sublocality');
+                          print('My Location :$subadminstrative');
+                          senddata();
+                        },
+                        child: Center(
+                          child: ListTile(
+                            title: Text(
+                              'Get My Location',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+                            ),
+                            leading: Icon(Icons.location_on,color: Colors.red,size: 45,),
                           ),
-                          leading: Icon(Icons.location_on,color: Colors.red,size: 45,),
                         ),
                       ),
                     ),
