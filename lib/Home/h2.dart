@@ -68,6 +68,23 @@ class _h2State extends State<h2> {
     }
 
   }
+
+
+
+  //////search////////////
+  // String _searchQuery = '';
+  // List<dynamic> _searchResults = [];
+  // Future<void> _performSearch(String query) async {
+  //   final response = await post(Uri.parse("${con.url}search/pool.php"), body: {'query': query});
+  //   if (response.statusCode == 200) {
+  //     final data = json.decode(response.body);
+  //     setState(() {
+  //       _searchResults = data['destination'];
+  //
+  //     });
+  //   }
+  // }
+  //////search////////////
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -100,6 +117,13 @@ class _h2State extends State<h2> {
             Padding(
               padding: const EdgeInsets.all(15.0),
               child: TextField(
+                  // onChanged: (value) {
+                  //   setState(() {
+                  //     _searchQuery = value;
+                  //     print("Inside=$_searchQuery");
+                  //   });
+                  //   _performSearch(value);
+                  // },
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w400,
@@ -124,6 +148,36 @@ class _h2State extends State<h2> {
                 ),
               ),
             ),
+            // Container(
+            //   height:200,
+            //   child:FutureBuilder(
+            //   future: pool(),
+            //   builder: (context,snapshot) {
+            //     if (snapshot.hasError) {
+            //       print(snapshot.error);
+            //     }
+            //     // if (!snapshot.hasData ||snapshot.data.length==0) {
+            //     // return const Center(
+            //     // child: CircularProgressIndicator(),
+            //     // );
+            //     // }
+            //     return flag == 0 ? Center(child: CircularProgressIndicator()) :
+            //      ListView.builder(
+            //             itemCount: _searchResults.length,
+            //             itemBuilder: (context, index) {
+            //               final result = _searchResults[index];
+            //               return ListTile(
+            //           title: Text('${snapshot.data[index]['destination']}',style: TextStyle(fontSize: 25,color: Color(0xff068DA9),fontWeight: FontWeight.w600),),
+            //                 // subtitle: Text(result['description']),
+            //                 // Customize the display of search results as needed
+            //               );
+            //             },
+            //           );
+            //         }
+            //     )
+            //   ,
+            //
+            //               ),
             Container(
               height: 200,
               child: FutureBuilder(

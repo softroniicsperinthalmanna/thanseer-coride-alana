@@ -1,11 +1,13 @@
 import 'package:corider/Car%20pooling/c1.dart';
+import 'package:corider/Car%20pooling/c2.dart';
 import 'package:corider/Car%20pooling/c4.dart';
-import 'package:corider/Car%20pooling/connect_location.dart';
+// import 'package:corider/Car%20pooling/connect_location.dart';
+import '../connect.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'connect_location.dart';
+// import 'connect_location.dart';
 class c3 extends StatefulWidget {
   const c3({Key? key}) : super(key: key);
 
@@ -114,7 +116,7 @@ void initState(){
     if (response.statusCode==200) {
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Offer pool registerd')));
-      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context)=>c4()),(Route <dynamic> route )=>false);
+      Navigator.pushAndRemoveUntil(context,MaterialPageRoute(builder: (context)=>c2()),(Route <dynamic> route )=>false);
     }
 
   }

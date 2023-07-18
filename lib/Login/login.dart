@@ -136,7 +136,6 @@ Future<void> profile(String log_id) async {
                       (
                         opacity: 0.5,
                         child: Image(image: AssetImage('assets/login/a.png'),fit: BoxFit.cover,))),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 18.0,vertical: 30),
                   child: TextFormField(
@@ -214,7 +213,6 @@ Future<void> profile(String log_id) async {
                 SizedBox(
                   height:15,
                 ),
-
                 Text('or ',style: TextStyle(fontSize: 14),),
                 SizedBox(
                   height:15,

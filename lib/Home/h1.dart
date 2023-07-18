@@ -109,44 +109,69 @@ class _h1State extends State<h1> {
       drawer: Drawer(
         backgroundColor: Colors.white,
         child: Container(
-          height: 600,
+          height: MediaQuery.of(context).size.height,
           child: ListView(
             children: [
-              DrawerHeader(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      FutureBuilder(
-                          future: getdata(),
-                              builder: (context, snapshot) {
-                                if (snapshot.hasError) {
-                                  print(snapshot.error);
-                                }
-                                return flag == 0 ?
-                                Center(child: CircularProgressIndicator()) :
-                                Container(
-                                  height:137,
-                                    child: ListView.builder(
-                                        itemCount: 1,
-                                        // shrinkWrap: true,
-                                        // physics: BouncingScrollPhysics(),
-                                        itemBuilder: (BuildContext context,
-                                            int index) {
-                                          return Column(
-                                            children: [
-                                              CircleAvatar(
-                                                backgroundImage: NetworkImage(
-                                                    '${con.url}login/image/${snapshot.data['dp']}'),
-                                                radius: 50,
-                                              ),
-                                              Text('${snapshot.data['username']}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
-                                            ],
-                                          );
-                                        }));
-                              })]
-                  )
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(onPressed: (){  Navigator.push(context,MaterialPageRoute(builder: (context) => help()));
+                  }, icon: Icon(Icons.help_outline)),
+
+                  IconButton(onPressed: (){
+                    showDialog(context: context, builder: (context) {
+                      return AlertDialog(
+                        title: Text('Are you sure you want to logout!'),
+                        actions: [
+                          TextButton(onPressed: () {
+                            // Navigator.push(context,
+                            //     MaterialPageRoute(builder: (context) => h1()));
+                            Navigator.pop(context);
+                          }, child: Text('No')),
+                          TextButton(onPressed: () {
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) => login()));
+                          }, child: Text('Yes')),
+
+                        ],
+                      );
+                    });
+                  }, icon: Icon(Icons.logout)),
+
+                ],
               ),
+
+              DrawerHeader(
+                  child: FutureBuilder(
+                      future: getdata(),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasError) {
+                              print(snapshot.error);
+                            }
+                            return flag == 0 ?
+                            Center(child: CircularProgressIndicator()) :
+                            Container(
+                              height:137,
+                                child: ListView.builder(
+                                    itemCount: 1,
+                                    // shrinkWrap: true,
+                                    // physics: BouncingScrollPhysics(),
+                                    itemBuilder: (BuildContext context,
+                                        int index) {
+                                      return Column(
+                                        children: [
+                                          CircleAvatar(
+                                            backgroundImage: NetworkImage(
+                                                '${con.url}login/image/${snapshot.data['dp']}'),
+                                            radius: 50,
+                                          ),
+                                          Text('${snapshot.data['username']}', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),)
+                                        ],
+                                      );
+                                    }));
+                          })
+              ),
+
               InkWell(
                 onTap: () {
                   Navigator.push(context,
@@ -228,49 +253,61 @@ class _h1State extends State<h1> {
 
                 ),
               ),
-              Divider(
-                thickness: 2,
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => help()));
-                },
-                child: ListTile(
-                  leading: Icon(Icons.help_outline),
-                  title: Text('Help'),
+              // Divider(
+              //   thickness: 2,
+              // ),
+              // InkWell(
+              //   onTap: () {
+              //     Navigator.push(
+              //         context, MaterialPageRoute(builder: (context) => help()));
+              //   },
+              //   child: ListTile(
+              //     leading: Icon(Icons.help_outline),
+              //     title: Text('Help'),
+              //
+              //   ),
+              // ),
+              // Divider(
+              //   thickness: 2,
+              // ),
+              // InkWell(
+              //   onTap: () {
+              //     showDialog(context: context, builder: (context) {
+              //       return AlertDialog(
+              //         title: Text('Are you sure you want to logout!'),
+              //         actions: [
+              //           TextButton(onPressed: () {
+              //             Navigator.push(context,
+              //                 MaterialPageRoute(builder: (context) => h1()));
+              //           }, child: Text('No')),
+              //           TextButton(onPressed: () {
+              //             Navigator.push(context,
+              //                 MaterialPageRoute(builder: (context) => login()));
+              //           }, child: Text('Yes')),
+              //
+              //         ],
+              //       );
+              //     });
+              //   },
+              //   child: ListTile(
+              //     leading: Icon(Icons.logout),
+              //     title: Text('logout'),
+              //
+              //   ),
+              // ),
 
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text('GO Share',style: GoogleFonts.gruppo(
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xff068DA9),
+                    // fontFamily: 'Times New Roman'
+                  ),),
                 ),
               ),
-              Divider(
-                thickness: 2,
-              ),
-              InkWell(
-                onTap: () {
-                  showDialog(context: context, builder: (context) {
-                    return AlertDialog(
-                      title: Text('Are you sure you want to logout!'),
-                      actions: [
-                        TextButton(onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => h1()));
-                        }, child: Text('No')),
-                        TextButton(onPressed: () {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => login()));
-                        }, child: Text('Yes')),
-
-                      ],
-                    );
-                  });
-                },
-                child: ListTile(
-                  leading: Icon(Icons.logout),
-                  title: Text('logout'),
-
-                ),
-              ),
-
             ],
           ),
         ),
