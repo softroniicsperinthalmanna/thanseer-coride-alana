@@ -1,4 +1,5 @@
 import 'package:corider/Login/login.dart';
+import 'package:corider/Police%20module/police_login.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 class first_page extends StatelessWidget {
@@ -56,7 +57,7 @@ class first_page extends StatelessWidget {
 
                       ),
                       onPressed: (){
-                        // Navigator.push(context, MaterialPageRoute(builder: (context)=>login()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>police_login()));
                       }, child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -71,7 +72,6 @@ class first_page extends StatelessWidget {
                   )),
                 ),
               ),
-
             ],
           )),
     );

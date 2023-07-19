@@ -84,6 +84,9 @@ class _alertState extends State<alert> {
       'log_id':log_id,
       'lat':latitude.toString(),
       'long':longitude.toString(),
+      'locality':locality,
+      'street':street,
+      'sublocality':sublocality,
     };
     print(data);
     print('inside fuction');

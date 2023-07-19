@@ -1,10 +1,9 @@
 import 'dart:convert';
-
 import 'package:corider/Car%20pooling/c2.dart';
 import 'package:corider/Car%20pooling/c3.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
+// import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'current_location.dart';
@@ -23,7 +22,7 @@ class _c1State extends State<c1> {
   String? locality='locality';
   String? street='street';
   String? sublocality='sublocality';
-  String?subadminstrative='subadminstrative';
+  String? subadminstrative='subadminstrative';
   var location = 'click';
 
   senddata() async {
