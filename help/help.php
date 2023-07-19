@@ -5,7 +5,11 @@ $lat = $_POST['lat'];
 $long = $_POST['long'];
 $date = $_POST['date'];
 $message = $_POST['message'];
-$sql = mysqli_query($con, "INSERT INTO help (log_id, date, message, lat, `long`) VALUES ('$log_id', '$date', '$message', '$lat', '$long')");
+$locality=$_POST['locality'];
+$street=$_POST['street'];
+$sublocality=$_POST['sublocality'];
+
+$sql = mysqli_query($con, "INSERT INTO help (locality,street,sublocality,log_id, date, message, lat, `long`) VALUES ('$locality','$street','$sublocality','$log_id', '$date', '$message', '$lat', '$long')");
 if ($sql) {
     $myarray['result'] = 'success';
 } else {
